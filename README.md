@@ -1,1 +1,1 @@
-### hse deep python autumun 2024
+### hse deep python autumn 2024
