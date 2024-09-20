@@ -16,9 +16,9 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  validate_homerworks:
+  validate_homeworks:
     # The type of runner that the job will run on
-    name: Validate all homerworks
+    name: Validate all homeworks
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -43,7 +43,7 @@ jobs:
 
       - name: Check tests with unittest
         if: ${{ always() }}
-        run: coverage run -m unittest discover -s hse_deep_python_aut_24_darkhanov/01 .
+        run: coverage run -m unittest discover -s hse_deep_python_aut_24_darkhanov/01 -p 'test_*.py'
 
       - name: Check test coverage
         run: coverage report -m
