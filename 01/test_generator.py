@@ -5,7 +5,7 @@ from generator import read_text, check_line
 class GeneratorTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.filename = 'texts.txt'
+        self.filename = '/texts.txt'
         self.wolf = ['волк']
         self.words = ['с', 'в', 'это', 'же']
 
