@@ -41,9 +41,8 @@ jobs:
         if: ${{ always() }}
         run: pylint ./*/*.py
 
-      - name: Check tests with unittest
-        if: ${{ always() }}
-        run: coverage run -m unittest discover -s hse_deep_python_aut_24_darkhanov/01 -p 'test_*.py'
+      - name: Run tests with unittest
+        run: coverage run -m unittest discover -s 01 -p 'test_*.py'
 
       - name: Check test coverage
         run: coverage report -m
