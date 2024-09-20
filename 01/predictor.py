@@ -3,8 +3,8 @@ class GreaterEqualError(Exception):
 
 
 class SomeModel:
-	def predict(self, message: str) -> float:
-		return 0.5
+    def predict(self, message: str) -> float:
+        return 0.5
 
 
 def predict_message_mood(
@@ -24,15 +24,15 @@ def predict_message_mood(
         raise TypeError("good_thresholds should be 'float'")
 
     if bad_thresholds > good_thresholds:
-        raise GreaterEqualError("bad_thresholds is greater than good_thresholds")
+        raise GreaterEqualError("bad_thresholds > than good_thresholds")
 
     if bad_thresholds == good_thresholds:
-        raise GreaterEqualError('bad_thresholds is equal to good_thresholds')
+        raise GreaterEqualError('bad_thresholds == good_thresholds')
 
     prediction = model.predict(message)
 
     if prediction < bad_thresholds:
         return 'неуд'
-    elif prediction > good_thresholds:
+    if prediction > good_thresholds:
         return 'отл'
     return 'норм'

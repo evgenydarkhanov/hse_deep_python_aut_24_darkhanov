@@ -1,21 +1,21 @@
 import io
-from typing import Union, List, Optional
+from typing import Union, List
 
 
 def read_text(filename: Union[str, io.TextIOWrapper],
               search_words: List[str],
               stop_words: List[str]):
-    
+
     if not isinstance(search_words, list):
         raise TypeError("'search_words' must be 'list'")
 
     if not isinstance(stop_words, list):
         raise TypeError("'stop_words' must be 'list'")
 
-    if not all([isinstance(search_word, str) for search_word in search_words]):
+    if not all(isinstance(search_word, str) for search_word in search_words):
         raise TypeError("'search_words' elements must be 'str'")
 
-    if not all([isinstance(stop_word, str) for stop_word in stop_words]):
+    if not all(isinstance(stop_word, str) for stop_word in stop_words):
         raise TypeError("'stop_words' elements must be 'str'")
 
     if isinstance(filename, str):

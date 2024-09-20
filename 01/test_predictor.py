@@ -31,7 +31,7 @@ class PredictorTestCase(unittest.TestCase):
         self.model.predict.return_value = 0.1
         result = predict_message_mood(self.model, 'test')
         self.assertNotEqual(result, 'отл')
-    
+
     def test_05_message_not_str(self):
         """ 05. TEST исключение 'message' """
         with self.assertRaises(TypeError):
@@ -55,7 +55,7 @@ class PredictorTestCase(unittest.TestCase):
     def test_09_bad_equal_good(self):
         """ 09. TEST исключение 'bad_thresholds' == 'good_thresholds' """
         with self.assertRaises(GreaterEqualError):
-            predict_message_mood(self.model, 'test', bad_thresholds=0.8, good_thresholds=0.8) 
+            predict_message_mood(self.model, 'test', bad_thresholds=0.8, good_thresholds=0.8)
 
 
 if __name__ == "__main__":

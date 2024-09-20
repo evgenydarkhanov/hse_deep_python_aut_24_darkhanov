@@ -1,5 +1,4 @@
 import unittest
-import io
 from generator import read_text, check_line
 
 
@@ -22,7 +21,7 @@ class GeneratorTestCase(unittest.TestCase):
 
     def test_02(self):
         """ 02. TEST 'filename' is 'io.TextIOWrapper' """
-        with open(self.filename, 'r')  as f:
+        with open(self.filename, 'r', encoding='utf-8')  as f:
             lines = []
             for line in read_text(f, self.wolf, []):
                 check_result = check_line(line, self.wolf, [])
@@ -30,7 +29,7 @@ class GeneratorTestCase(unittest.TestCase):
                     lines.append(check_result)
 
             self.assertEqual(lines, ['волк слабее льва и тигра но в цирке не выступает'])
-        
+
     def test_03(self):
         """ 03. TEST 'filename' TypeError """
         with self.assertRaises(TypeError):
@@ -40,7 +39,7 @@ class GeneratorTestCase(unittest.TestCase):
         """ 04. TEST 'search_words' TypeError """
         with self.assertRaises(TypeError):
             list(read_text(self.filename, 'wolf', []))
-    
+
     def test_05(self):
         """ 05. TEST 'stop_words' TypeError """
         with self.assertRaises(TypeError):
@@ -65,7 +64,7 @@ class GeneratorTestCase(unittest.TestCase):
                 lines.append(check_result)
 
         lines_to_check = []
-        with open(self.filename, 'r') as f:
+        with open(self.filename, 'r', encoding='utf-8') as f:
             lines_to_check = [line.rstrip() for line in f]
 
         self.assertEqual(lines, lines_to_check)
