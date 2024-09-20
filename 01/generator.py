@@ -19,13 +19,11 @@ def read_text(filename: Union[str, io.TextIOWrapper],
         raise TypeError("'stop_words' elements must be 'str'")
 
     if isinstance(filename, str):
-        with open(filename, 'r') as file:
-            for line in file:
-                yield line
+        with open(filename, 'r', encoding='utf-8') as file:
+            yield from file
 
     elif isinstance(filename, io.TextIOWrapper):
-        for line in filename:
-            yield line
+        yield from filename
 
     else:
         raise TypeError("filename must be 'str' or 'io.TextIOWrapper'")

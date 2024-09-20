@@ -21,7 +21,7 @@ class GeneratorTestCase(unittest.TestCase):
 
     def test_02(self):
         """ 02. TEST 'filename' is 'io.TextIOWrapper' """
-        with open(self.filename, 'r', encoding='utf-8')  as f:
+        with open(self.filename, 'r', encoding='utf-8') as f:
             lines = []
             for line in read_text(f, self.wolf, []):
                 check_result = check_line(line, self.wolf, [])
