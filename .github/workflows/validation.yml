@@ -10,7 +10,7 @@ on:
 
 jobs:
   validate_homeworks:
-    name: Validate all homeworks
+    name: Validate new homework
     runs-on: ubuntu-latest
 
     steps:
