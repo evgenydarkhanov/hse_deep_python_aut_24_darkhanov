@@ -1,10 +1,10 @@
 [MASTER]
 disable=
-    C0114,
-    C0115,
-    C0116,
-    W0613,
-    R0903,
+    C0114, # Missing module docstring (missing-module-docstring)
+    C0115, # Missing class docstring (missing-class-docstring)
+    C0116, # Missing function or method docstring (missing-function-docstring)
+    W0613, # hw02, Unused argument 'message' (unused-argument)
+    R0903, # hw02, Too few public methods (1/2) (too-few-public-methods)
 
 [FORMAT]
-max-line-length=100
+max-line-length=80
