@@ -3,8 +3,9 @@ disable=
     C0114, # Missing module docstring (missing-module-docstring)
     C0115, # Missing class docstring (missing-class-docstring)
     C0116, # Missing function or method docstring (missing-function-docstring)
-    W0613, # hw02, Unused argument 'message' (unused-argument)
-    R0903, # hw02, Too few public methods (1/2) (too-few-public-methods)
+    W0613, # hw01, Unused argument 'message' (unused-argument)
+    R0903, # hw01, Too few public methods (1/2) (too-few-public-methods)
+    W0201, # hw04, Attribute 'name' defined outside __init__ (attribute-defined-outside-init)
 
 [FORMAT]
 max-line-length=80
