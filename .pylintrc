@@ -5,7 +5,11 @@ disable=
     C0116, # Missing function or method docstring (missing-function-docstring)
     W0613, # hw01, Unused argument 'message' (unused-argument)
     R0903, # hw01, Too few public methods (1/2) (too-few-public-methods)
+    E1101, # hw04, Class 'CustomClass' has no 'custom_x' member (no-member)
+    R0902, # hw04, Too many instance attributes (9/7) (too-many-instance-attributes) 
+    W0104, # hw04, Statement seems to have no effect (pointless-statement)
     W0201, # hw04, Attribute 'name' defined outside __init__ (attribute-defined-outside-init)
+    W0212, # hw04, Access to a protected member _a of a client class (protected-access)
 
 [FORMAT]
 max-line-length=80
