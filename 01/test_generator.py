@@ -5,7 +5,7 @@ from module_generator import read_text
 class GeneratorTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.filename = 'texts.txt'
+        self.filename = '01/texts.txt'
 
     def test_01(self):
         """ 01. general functionality, filename """
