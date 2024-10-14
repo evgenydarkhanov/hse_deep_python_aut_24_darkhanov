@@ -18,26 +18,23 @@ def read_text(filename: Union[str, io.TextIOWrapper],
     if not all(isinstance(stop_word, str) for stop_word in stop_words):
         raise TypeError("'stop_words' elements must be 'str'")
 
+    search_words = set(word.lower() for word in search_words)
+    stop_words = set(word.lower() for word in stop_words)
+
+    def check_line(lines, search_words, stop_words):
+        for line in lines:
+            words = set(line.strip().lower().split())
+            if words & stop_words:
+                continue
+            if words & search_words:
+                yield line.strip()
+
     if isinstance(filename, str):
         with open(filename, 'r', encoding='utf-8') as file:
-            yield from file
+            yield from check_line(file, search_words, stop_words)
 
     elif isinstance(filename, io.TextIOWrapper):
-        yield from filename
+        yield from check_line(filename, search_words, stop_words)
 
     else:
         raise TypeError("filename must be 'str' or 'io.TextIOWrapper'")
-
-
-def check_line(line: str, search_words: List[str], stop_words: List[str]):
-    line_lower = line.lower()
-
-    for stop_word in stop_words:
-        if line_lower.find(stop_word.lower()) != -1:
-            return None
-
-    for search_word in search_words:
-        if line_lower.find(search_word.lower()) != -1:
-            return line.rstrip()
-
-    return None

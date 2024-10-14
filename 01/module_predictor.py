@@ -8,10 +8,9 @@ class SomeModel:
 
 
 def predict_message_mood(
-    model: SomeModel,
     message: str,
     bad_thresholds: float = 0.3,
-    good_thresholds: float = 0.8,
+    good_thresholds: float = 0.8
 ) -> str:
 
     if not isinstance(message, str):
@@ -29,6 +28,7 @@ def predict_message_mood(
     if bad_thresholds == good_thresholds:
         raise GreaterEqualError('bad_thresholds == good_thresholds')
 
+    model = SomeModel()
     prediction = model.predict(message)
 
     if prediction < bad_thresholds:

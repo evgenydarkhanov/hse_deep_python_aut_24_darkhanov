@@ -20,7 +20,7 @@ class CustomClassTestCase(unittest.TestCase):
         """ 01. general functionality """
         self.assertEqual(CustomClass.custom_x, 50)
         with self.assertRaises(AttributeError):
-            CustomClass.x
+            _ = CustomClass.x
 
         inst = CustomClass()
         self.assertEqual(inst.custom_x, 50)
@@ -29,18 +29,18 @@ class CustomClassTestCase(unittest.TestCase):
         self.assertEqual(str(inst), "Custom_by_metaclass")
 
         with self.assertRaises(AttributeError):
-            inst.x
+            _ = inst.x
         with self.assertRaises(AttributeError):
-            inst.val
+            _ = inst.val
         with self.assertRaises(AttributeError):
-            inst.line()
+            _ = inst.line()
         with self.assertRaises(AttributeError):
-            inst.yyy
+            _ = inst.yyy
 
         inst.dynamic = "added later"
         self.assertEqual(inst.custom_dynamic, "added later")
         with self.assertRaises(AttributeError):
-            inst.dynamic
+            _ =inst.dynamic
 
     def test_02(self):
         """ 02. attributes in __dict__ """
