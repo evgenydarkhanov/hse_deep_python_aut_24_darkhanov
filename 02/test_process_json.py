@@ -132,6 +132,10 @@ class ProcessJsonTestCase(unittest.TestCase):
         )
         self.callback_mock.assert_called_with('key1', 'wOrD1')
 
+    def test_05(self):
+        """ pass """
+        self.assertEqual(1, 1)
+
 
 if __name__ == "__main__":
     unittest.main()
