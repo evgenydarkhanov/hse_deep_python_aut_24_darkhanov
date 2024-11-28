@@ -28,3 +28,7 @@ class Bear:
     def __init__(self, name, age):
         self.name = weakref.ref(name)
         self.age = weakref.ref(age)
+
+
+if __name__ == "__main__":
+    print("Hello, world!")
