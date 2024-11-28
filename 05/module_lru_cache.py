@@ -24,6 +24,7 @@ class LRUCache:
         if not isinstance(key, Hashable):
             raise KeyError("key must be hashable")
         if key in self.cache:
+            del self.cache[key]
             self.cache[key] = value
         else:
             if len(self.cache) == self.limit:
