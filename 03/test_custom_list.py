@@ -185,14 +185,17 @@ class CustomListTestCase(unittest.TestCase):
 
     def test_10(self):
         """ 10. new object test """
-        res_sum = CustomList([1, 2, 3]) + CustomList([3, 2, 1])
-        res_sub = CustomList([1, 2, 3]) - CustomList([3, 2, 1])
+        test_lst_1 = CustomList([1, 2, 3])
+        test_lst_2 = CustomList([3, 2, 1])
 
-        self.assertIsNot(res_sum, CustomList([1, 2, 3]))
-        self.assertIsNot(res_sum, CustomList([3, 2, 1]))
+        res_sum = test_lst_1 + test_lst_2
+        res_sub = test_lst_1 - test_lst_2
 
-        self.assertIsNot(res_sub, CustomList([1, 2, 3]))
-        self.assertIsNot(res_sub, CustomList([3, 2, 1]))
+        self.assertIsNot(res_sum, test_lst_1)
+        self.assertIsNot(res_sum, test_lst_2)
+
+        self.assertIsNot(res_sub, test_lst_1)
+        self.assertIsNot(res_sub, test_lst_2)
 
 
 if __name__ == "__main__":
