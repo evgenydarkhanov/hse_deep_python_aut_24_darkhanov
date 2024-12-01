@@ -1,0 +1,14 @@
+FILE	DEBUG	created LRUCache instance
+FILE	DEBUG	created log file 'cache.log'
+FILE	DEBUG	created STREAM HANDLER
+FILE	DEBUG	created FILTER <FileHandler /home/vboxuser/deep_python/hw/09/cache.log (DEBUG)>
+FILE	INFO	setting nonexistent key 'k1'
+FILE	INFO	setting nonexistent key 'k2'
+FILE	INFO	getting nonexistent key 'k3'
+FILE	INFO	getting existing key 'k2'
+FILE	INFO	getting existing key 'k1'
+FILE	INFO	setting nonexistent key 'k3'
+FILE	INFO	limit reached
+FILE	INFO	getting existing key 'k3'
+FILE	INFO	getting nonexistent key 'k2'
+FILE	INFO	getting existing key 'k1'
