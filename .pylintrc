@@ -15,6 +15,7 @@ disable=
     W0104, # hw04, Statement seems to have no effect (pointless-statement)
     W0201, # hw04, Attribute 'name' defined outside __init__ (attribute-defined-outside-init)
     W0212, # hw04, Access to a protected member _a of a client class (protected-access)
+    R0915, # hw04, Too many statements (60/50) (too-many-statements)
     W0621, # hw08, Redefining name 'animal' from outer scope (line 25) (redefined-outer-name)
     R0801, # hw08, Similar lines in 2 files
 

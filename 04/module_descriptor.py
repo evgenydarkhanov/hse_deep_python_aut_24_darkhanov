@@ -23,20 +23,20 @@ class Base:
 class Integer(Base):
     def validate(self, val):
         if not isinstance(val, int):
-            raise TypeError(f"{self.name} must be an Integer")
+            raise TypeError(f"'{self.name}' must be an Integer")
 
 
 class String(Base):
     def validate(self, val):
         if not isinstance(val, str):
-            raise TypeError(f"{self.name} must be a String")
+            raise TypeError(f"'{self.name}' must be a String")
 
 
 class PositiveInteger(Integer):
     def validate(self, val):
         super().validate(val)
         if val <= 0:
-            raise TypeError(f"{self.name} must be a PositiveInteger")
+            raise TypeError(f"'{self.name}' must be a PositiveInteger")
 
 
 class Data:
