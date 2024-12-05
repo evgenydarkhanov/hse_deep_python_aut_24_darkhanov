@@ -24,14 +24,14 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Check flake8
-        run: flake8 ./04/
+        run: flake8 ./01/
 
       - name: Check pylint
         if: ${{ always() }}
-        run: pylint ./04/*.py
+        run: pylint ./01/*.py
 
       - name: Run tests with unittest
-        run: coverage run -m unittest discover -s 04 -p 'test_*.py'
+        run: coverage run -m unittest discover -s 01 -p 'test_*.py'
 
       - name: Check test coverage
         run: coverage report -m

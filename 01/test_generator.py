@@ -47,7 +47,7 @@ class GeneratorTestCase(unittest.TestCase):
         with open(self.filename, 'r', encoding='utf-8') as f:
             check = [line.rstrip() for line in f]
 
-        search = ['сЪешь', 'волк', 'три', 'Python', 'всегда']
+        search = ['сЪешь', 'волк', 'три', 'Python', 'всегда', 'word']
 
         result_1 = list(read_text(self.filename, search, []))
         result_2 = list(read_text(self.filename, search, ['']))
@@ -61,7 +61,7 @@ class GeneratorTestCase(unittest.TestCase):
 
     def test_05(self):
         """ 05. search no lines """
-        stop = ['сЪешь', 'волк', 'три', 'Python', 'всегда']
+        stop = ['сЪешь', 'волк', 'три', 'Python', 'всегда', 'word']
 
         result_1 = list(read_text(self.filename, [], stop))
         result_2 = list(read_text(self.filename, [''], stop))
@@ -123,6 +123,20 @@ class GeneratorTestCase(unittest.TestCase):
         self.assertEqual(result_2, expected)
         self.assertEqual(result_3, expected)
         self.assertEqual(result_4, expected)
+
+    def test_09(self):
+        """ line == one word """
+        result_1 = list(read_text(self.filename, ['word'], []))
+        result_2 = list(read_text(self.filename, ['wOrD'], []))
+
+        self.assertEqual(result_1, ['word'])
+        self.assertEqual(result_2, ['word'])
+
+        result_3 = list(read_text(self.filename, ['word'], ['word']))
+        result_4 = list(read_text(self.filename, ['WoRd'], ['wOrD']))
+
+        self.assertEqual(result_3, [])
+        self.assertEqual(result_4, [])
 
 
 if __name__ == "__main__":
