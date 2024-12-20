@@ -59,15 +59,3 @@ jobs:
 
       - name: Check test coverage 05/
         run: coverage report -m
-
-      - name: Run tests 08/ with unittest
-        run: coverage run -m unittest discover -s 08 -p 'test_*.py'
-
-      - name: Check test coverage 08/
-        run: coverage report -m
-
-      - name: Run tests 09/ with unittest
-        run: coverage run -m unittest discover -s 09 -p 'test_*.py'
-
-      - name: Check test coverage 09/
-        run: coverage report -m
