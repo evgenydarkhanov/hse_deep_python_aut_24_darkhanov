@@ -36,6 +36,9 @@ class LRUTestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             _ = LRUCache(limit=-1)
 
+        with self.assertRaises(TypeError):
+            _ = LRUCache(limit=[1])
+
         with self.assertRaises(KeyError):
             cache = LRUCache()
             cache.set(['k1'], 'val1')
