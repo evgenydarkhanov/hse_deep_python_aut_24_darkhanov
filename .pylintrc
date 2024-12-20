@@ -10,6 +10,7 @@ disable=
     R0911, # hw02, Too many return statements (8/6) (too-many-return-statements)
     R0912, # hw02, Too many branches (16/12) (too-many-branches). Used when a function or method has too many branches, making it hard to follow.
     R1710, # hw02, Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+    R0914, # hw03, Too many local variables (20/15) (too-many-locals)
     E1101, # hw04, Class 'CustomClass' has no 'custom_x' member (no-member)
     R0902, # hw04, Too many instance attributes (9/7) (too-many-instance-attributes) 
     W0104, # hw04, Statement seems to have no effect (pointless-statement)

@@ -20,6 +20,11 @@ class LRUTestCase(unittest.TestCase):
         self.assertIsNone(cache.get('k2'))
         self.assertEqual(cache.get('k1'), 'val1')
 
+        # дополнительная проверка всех вовлечённых ключей
+        self.assertEqual(cache.get('k3'), 'val3')
+        self.assertIsNone(cache.get('k2'))
+        self.assertEqual(cache.get('k1'), 'val1')
+
     def test_02(self):
         """ 02. errors """
         with self.assertRaises(TypeError):
@@ -56,6 +61,11 @@ class LRUTestCase(unittest.TestCase):
         cache.set('k3', 'val3')
         self.assertIsNone(cache.get('k1'))
 
+        # проверка всех вовлечённых ключей
+        self.assertEqual(cache.get('k3'), 'val3')
+        self.assertEqual(cache.get('k2'), 'val2')
+        self.assertIsNone(cache.get('k1'))
+
     def test_04(self):
         """ 04. last element """
         cache = LRUCache(limit=3)
@@ -80,6 +90,12 @@ class LRUTestCase(unittest.TestCase):
         last = list(cache.cache.items())[-1]
         self.assertEqual(last, ('k1', 'value1'))
 
+        # проверка всех вовлечённых ключей
+        self.assertEqual(cache.get('k4'), 'val4')
+        self.assertEqual(cache.get('k2'), 'val2')
+        self.assertEqual(cache.get('k1'), 'value1')
+        self.assertIsNone(cache.get('k3'))
+
     def test_05(self):
         """ 05. first element """
         cache = LRUCache(limit=3)
@@ -99,10 +115,17 @@ class LRUTestCase(unittest.TestCase):
         first = list(cache.cache.items())[0]
         self.assertEqual(first, ('k3', 'val3'))
 
-        # дополнительная проверка внутренних атрибутов, 'k3' - первый
+        # дополнительная проверка внутренних атрибутов, 'k4' - первый
         cache.get('k3')
         first = list(cache.cache.items())[0]
         self.assertEqual(first, ('k4', 'val4'))
+
+        # проверка всех вовлечённых ключей
+        self.assertEqual(cache.get('k5'), 'val5')
+        self.assertEqual(cache.get('k4'), 'val4')
+        self.assertEqual(cache.get('k3'), 'val3')
+        self.assertIsNone(cache.get('k2'))
+        self.assertIsNone(cache.get('k1'))
 
     def test_06(self):
         """ 06. value update """
@@ -123,11 +146,22 @@ class LRUTestCase(unittest.TestCase):
         cache_lst = list(cache.cache.items())
         self.assertEqual(cache_lst, [('k2', 'val2'), ('k1', 'val3')])
 
+        # проверка всех вовлечённых ключей
+        self.assertEqual(cache.get('k2'), 'val2')
+        self.assertEqual(cache.get('k1'), 'val3')
+
     def test_07(self):
         """ 07. limit=0 """
         cache = LRUCache(limit=0)
         with self.assertRaises(StopIteration):
             cache.set('k1', 'val1')
+
+        # дополнительная проверка внутренних атрибутов
+        cache_lst = list(cache.cache.items())
+        self.assertEqual(cache_lst, [])
+
+        # проверка всех вовлечённых ключей
+        self.assertIsNone(cache.get('k1'))
 
     def test_08(self):
         """ 08. limit=1 """
@@ -143,6 +177,10 @@ class LRUTestCase(unittest.TestCase):
         # дополнительная проверка внутренних атрибутов
         cache_lst = list(cache.cache.items())
         self.assertEqual(cache_lst, [('k2', 'val2')])
+
+        # проверка всех вовлечённых ключей
+        self.assertEqual(cache.get('k2'), 'val2')
+        self.assertIsNone(cache.get('k1'))
 
     def test_09(self):
         """ 09. updating and removal order """
@@ -168,6 +206,12 @@ class LRUTestCase(unittest.TestCase):
         check_lst = [('k2', 'val_k2'), ('k3', 'val_k3'), ('k4', 'val4')]
         self.assertEqual(cache_lst, check_lst)
 
+        # проверка всех вовлечённых ключей
+        self.assertEqual(cache.get('k4'), 'val4')
+        self.assertEqual(cache.get('k3'), 'val_k3')
+        self.assertEqual(cache.get('k2'), 'val_k2')
+        self.assertIsNone(cache.get('k1'))
+
     def test_10(self):
         """ consequences of change """
         cache = LRUCache(3)
@@ -182,6 +226,12 @@ class LRUTestCase(unittest.TestCase):
 
         cache.set('k4', 'val4')     # ключ 'k3' должен удалиться
         self.assertIsNone(cache.get('k3'))
+
+        # проверка всех вовлечённых ключей
+        self.assertEqual(cache.get('k4'), 'val4')
+        self.assertIsNone(cache.get('k3'))
+        self.assertEqual(cache.get('k2'), 'val_k2')
+        self.assertEqual(cache.get('k1'), 'val_k1')
 
 
 if __name__ == "__main__":

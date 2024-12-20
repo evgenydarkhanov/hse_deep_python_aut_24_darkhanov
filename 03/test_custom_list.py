@@ -26,89 +26,153 @@ class CustomListTestCase(unittest.TestCase):
         """ 01. add test """
         test_list = CustomList([1, 2, 3])
 
-        add_01 = test_list + CustomList([2, 1])
+        add_list_01 = CustomList([2, 1])
+        add_01 = test_list + add_list_01
         self.assertIsNot(add_01, test_list)
         self.assertTrue(self.compare(add_01, CustomList([3, 3, 3])))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
+        self.assertTrue(self.compare(add_list_01, CustomList([2, 1])))
 
         add_02 = test_list + [2, 1]
         self.assertIsNot(add_02, test_list)
         self.assertTrue(self.compare(add_02, CustomList([3, 3, 3])))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
 
         add_03 = test_list + [4, 3, 2, 5]
         self.assertIsNot(add_03, test_list)
         self.assertTrue(self.compare(add_03, CustomList([5, 5, 5, 5])))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
 
-        add_04 = CustomList([0]) + [1, 2, 3]
+        add_list_04 = CustomList([0])
+        add_04 = add_list_04 + [1, 2, 3]
         self.assertTrue(self.compare(add_04, CustomList([1, 2, 3])))
+        # element-by-element
+        self.assertTrue(self.compare(add_list_04, CustomList([0])))
 
-        add_05 = CustomList([]) + test_list
+        add_list_05 = CustomList([])
+        add_05 = add_list_05 + test_list
         self.assertIsNot(add_05, test_list)
         self.assertTrue(self.compare(add_05, CustomList([1, 2, 3])))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
+        self.assertTrue(self.compare(add_list_05, CustomList([])))
 
-        add_06 = CustomList([10, 20]) + 10
+        add_list_06 = CustomList([10, 20])
+        add_06 = add_list_06 + 10
         self.assertTrue(self.compare(add_06, CustomList([20, 30])))
+        # element-by-element
+        self.assertTrue(self.compare(add_list_06, CustomList([10, 20])))
 
         add_07 = [2, 1] + test_list
         self.assertIsNot(add_07, test_list)
         self.assertTrue(self.compare(add_07, add_02))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
 
         add_08 = [4, 3, 2, 5] + test_list
         self.assertIsNot(add_08, test_list)
         self.assertTrue(self.compare(add_08, add_03))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
 
-        add_09 = [1, 2, 3] + CustomList([0])
+        add_list_09 = CustomList([0])
+        add_09 = [1, 2, 3] + add_list_09
         self.assertTrue(self.compare(add_09, add_04))
+        # element-by-element
+        self.assertTrue(self.compare(add_list_09, CustomList([0])))
 
-        add_10 = test_list + CustomList([])
+        add_list_10 = CustomList([])
+        add_10 = test_list + add_list_10
         self.assertIsNot(add_10, test_list)
         self.assertTrue(self.compare(add_10, add_05))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
+        self.assertTrue(self.compare(add_list_10, CustomList([])))
 
-        add_11 = 10 + CustomList([10, 20])
+        add_list_11 = CustomList([10, 20])
+        add_11 = 10 + add_list_11
         self.assertTrue(self.compare(add_11, add_06))
+        # element-by-element
+        self.assertTrue(self.compare(add_list_11, CustomList([10, 20])))
 
     def test_02(self):
         """ 02. subtract test """
         test_list = CustomList([1, 2, 3])
 
-        sub_01 = test_list - CustomList([2, 1])
+        sub_list_01 = CustomList([2, 1])
+        sub_01 = test_list - sub_list_01
         self.assertIsNot(sub_01, test_list)
         self.assertTrue(self.compare(sub_01, CustomList([-1, 1, 3])))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
+        self.assertTrue(self.compare(sub_list_01, CustomList([2, 1])))
 
         sub_02 = test_list - [2, 1]
         self.assertIsNot(sub_02, test_list)
         self.assertTrue(self.compare(sub_02, CustomList([-1, 1, 3])))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
 
         sub_03 = test_list - [4, 3, 2, 5]
         self.assertIsNot(sub_02, test_list)
         self.assertTrue(self.compare(sub_03, CustomList([-3, -1, 1, -5])))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
 
-        sub_04 = CustomList([0]) - [1, 2, 3]
+        sub_list_04 = CustomList([0])
+        sub_04 = sub_list_04 - [1, 2, 3]
         self.assertTrue(self.compare(sub_04, CustomList([-1, -2, -3])))
+        # element-by-element
+        self.assertTrue(self.compare(sub_list_04, CustomList([0])))
 
-        sub_05 = CustomList([]) - test_list
+        sub_list_05 = CustomList([])
+        sub_05 = sub_list_05 - test_list
         self.assertIsNot(sub_05, test_list)
         self.assertTrue(self.compare(sub_05, CustomList([-1, -2, -3])))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
+        self.assertTrue(self.compare(sub_list_05, CustomList([])))
 
-        sub_06 = CustomList([10, 20]) - 10
+        sub_list_06 = CustomList([10, 20])
+        sub_06 = sub_list_06 - 10
         self.assertTrue(self.compare(sub_06, CustomList([0, 10])))
+        # element-by-element
+        self.assertTrue(self.compare(sub_list_06, CustomList([10, 20])))
 
         sub_07 = [2, 1] - test_list
         self.assertIsNot(sub_07, test_list)
         self.assertTrue(self.compare(sub_07, CustomList([1, -1, -3])))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
 
         sub_08 = [4, 3, 2, 5] - test_list
         self.assertIsNot(sub_08, test_list)
         self.assertTrue(self.compare(sub_08, CustomList([3, 1, -1, 5])))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
 
-        sub_09 = [1, 2, 3] - CustomList([0])
+        sub_list_09 = CustomList([0])
+        sub_09 = [1, 2, 3] - sub_list_09
         self.assertTrue(self.compare(sub_09, CustomList([1, 2, 3])))
+        # element-by-element
+        self.assertTrue(self.compare(sub_list_09, CustomList([0])))
 
-        sub_10 = test_list - CustomList([])
+        sub_list_10 = CustomList([])
+        sub_10 = test_list - sub_list_10
         self.assertIsNot(sub_01, test_list)
         self.assertTrue(self.compare(sub_10, CustomList([1, 2, 3])))
+        # element-by-element
+        self.assertTrue(self.compare(test_list, CustomList([1, 2, 3])))
+        self.assertTrue(self.compare(sub_list_10, CustomList([])))
 
-        sub_11 = 10 - CustomList([10, 20])
+        sub_list_11 = CustomList([10, 20])
+        sub_11 = 10 - sub_list_11
         self.assertTrue(self.compare(sub_11, CustomList([0, -10])))
+        # element-by-element
+        self.assertTrue(self.compare(sub_list_11, CustomList([10, 20])))
 
     def test_03(self):
         """ 03. '__eq__' test """
@@ -196,6 +260,9 @@ class CustomListTestCase(unittest.TestCase):
 
         self.assertIsNot(res_sub, test_lst_1)
         self.assertIsNot(res_sub, test_lst_2)
+        # element-by-element
+        self.assertTrue(self.compare(test_lst_1, CustomList([1, 2, 3])))
+        self.assertTrue(self.compare(test_lst_2, CustomList([3, 2, 1])))
 
 
 if __name__ == "__main__":
