@@ -266,5 +266,4 @@ class CustomListTestCase(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    assert 1 == 1
     unittest.main()
