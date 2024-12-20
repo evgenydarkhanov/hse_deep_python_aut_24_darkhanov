@@ -24,11 +24,11 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Check flake8
-        run: flake8 .
+        run: flake8 $(find . -type d -not -path '*/.*' -print)
 
       - name: Check pylint
         if: ${{ always() }}
-        run: pylint ./*/*/.py
+        run: pylint $(find . -name '*.py' -not -path '*/.*')
 
       - name: Run tests with unittest
         run: coverage run -m unittest 'test_*.py'
