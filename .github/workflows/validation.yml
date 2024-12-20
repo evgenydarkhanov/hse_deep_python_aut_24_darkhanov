@@ -24,14 +24,50 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Check flake8
-        run: flake8 ./03/
+        run: flake8 $(find . -type d -not -path '*/.*' -print)
 
       - name: Check pylint
         if: ${{ always() }}
-        run: pylint ./03/*.py
+        run: pylint $(find . -name '*.py' -not -path '*/.*')
 
-      - name: Run tests with unittest
+      - name: Run tests 01/ with unittest
+        run: coverage run -m unittest discover -s 01 -p 'test_*.py'
+
+      - name: Check test coverage 01/
+        run: coverage report -m
+
+      - name: Run tests 02/ with unittest
+        run: coverage run -m unittest discover -s 02 -p 'test_*.py'
+
+      - name: Check test coverage 02/
+        run: coverage report -m
+
+      - name: Run tests 03/ with unittest
         run: coverage run -m unittest discover -s 03 -p 'test_*.py'
 
-      - name: Check test coverage
+      - name: Check test coverage 03/
+        run: coverage report -m
+
+      - name: Run tests 04/ with unittest
+        run: coverage run -m unittest discover -s 04 -p 'test_*.py'
+
+      - name: Check test coverage 04/
+        run: coverage report -m
+
+      - name: Run tests 05/ with unittest
+        run: coverage run -m unittest discover -s 05 -p 'test_*.py'
+
+      - name: Check test coverage 05/
+        run: coverage report -m
+
+      - name: Run tests 08/ with unittest
+        run: coverage run -m unittest discover -s 08 -p 'test_*.py'
+
+      - name: Check test coverage 08/
+        run: coverage report -m
+
+      - name: Run tests 09/ with unittest
+        run: coverage run -m unittest discover -s 09 -p 'test_*.py'
+
+      - name: Check test coverage 09/
         run: coverage report -m
