@@ -1,11 +1,9 @@
 name: Validation
-
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
   workflow_dispatch:
 
 jobs:
@@ -15,6 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5.2.0
         with:
           python-version: '3.12'
@@ -24,14 +23,15 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Check flake8
-        run: flake8 $(find . -type d -not -path '*/.*' -print)
+        run: flake8 .
 
       - name: Check pylint
         if: ${{ always() }}
-        run: pylint $(find . -name '*.py' -not -path '*/.*')
+        run: pylint .
 
       - name: Run tests with unittest
         run: coverage run -m unittest discover -s . -p 'test_*.py'
 
       - name: Check test coverage
         run: coverage report -m
+
