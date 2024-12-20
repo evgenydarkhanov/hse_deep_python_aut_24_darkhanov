@@ -65,7 +65,6 @@ if __name__ == "__main__":
     sub([4], (5,))
 
     func_with_error()
-
     func_with_no_error()
 
     add.print_stat()
